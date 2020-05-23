@@ -9,7 +9,7 @@ truffle init
 #Copy contract from my ressources to the contract  directory
 ballot1$ cp ../Documents/coursera\ blockchain/P5wdZIZCEem-xg4p7cmXwA_b82396ed0a5c422c9552226463004e67_Updated-Smart-contracts-_Solidity-version-5.9_/course2_code_0.5.9/BallotBasic.sol  contracts/
 
-#compile
+#compile the contracts
 ballot1$truffle compile
 
 #create truffle-config.js
@@ -37,4 +37,5 @@ var Ballot = artifacts.require("Ballot");
     deployer.deploy(Ballot);
   };
 
-#
+#deploy the compiled contract in the develoment blockchain
+ballot1$truffle migrate ---reset
