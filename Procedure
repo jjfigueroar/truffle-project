@@ -1,0 +1,40 @@
+# What i did
+
+/// Create directory and initiate truffle
+mkdir ballot1
+cd ballot1
+truffle init
+
+/// Steps
+#Copy contract from my ressources to the contract  directory
+ballot1$ cp ../Documents/coursera\ blockchain/P5wdZIZCEem-xg4p7cmXwA_b82396ed0a5c422c9552226463004e67_Updated-Smart-contracts-_Solidity-version-5.9_/course2_code_0.5.9/BallotBasic.sol  contracts/
+
+#compile
+ballot1$truffle compile
+
+#create truffle-config.js
+#this sets the configuration of the local blockchain you'll deploy
+module.exports={
+  networks:{
+    development:{
+      host:"localhost",
+      port: 9545, #rpc port
+      network_id:"*"
+    }
+  }
+};
+
+#deploy the local blockchain
+#open a new terminal and type
+ballot1$ truffle develop #this creates a local test blockchain with 10 accounts
+#take note of those accounts
+
+#Add this file to the migration directory
+#in order to deploy a smart contract
+jfigueroa@jfigueroa-Aspire-M5-581T:~/ballot1/migrations$ cat 2_deploy_contracts.js
+var Ballot = artifacts.require("Ballot");
+  module.exports = function(deployer){
+    deployer.deploy(Ballot);
+  };
+
+#
